@@ -29,10 +29,7 @@ export const PeopleFilters = () => {
       <p className="panel-heading">Filters</p>
 
       <p className="panel-tabs" data-cy="SexFilter">
-        <SearchLink
-          className={!sex ? 'is-active' : ''}
-          params={{ sex: null }}
-        >
+        <SearchLink className={!sex ? 'is-active' : ''} params={{ sex: null }}>
           All
         </SearchLink>
 

@@ -84,7 +84,14 @@ export const PeoplePage = () => {
   const order = searchParams.get('order') || '';
   const sex = searchParams.get('sex') || '';
 
-  const visiblePeople = getVisiblePeople(people, query, centuries, sort, order, sex);
+  const visiblePeople = getVisiblePeople(
+    people,
+    query,
+    centuries,
+    sort,
+    order,
+    sex,
+  );
 
   useEffect(() => {
     getPeople()
