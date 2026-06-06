@@ -14,6 +14,7 @@ function getVisiblePeople(
   centuries: string[],
   sort: string,
   order: string,
+  sex: string,
 ): Person[] {
   let visiblePeople = [...people];
 
@@ -31,6 +32,10 @@ function getVisiblePeople(
         fatherName.includes(normalizedQuery)
       );
     });
+  }
+
+  if (sex) {
+    visiblePeople = visiblePeople.filter(person => person.sex === sex);
   }
 
   if (centuries.length > 0) {
@@ -77,8 +82,9 @@ export const PeoplePage = () => {
   const centuries = searchParams.getAll('centuries');
   const sort = searchParams.get('sort') || '';
   const order = searchParams.get('order') || '';
+  const sex = searchParams.get('sex') || '';
 
-  const visiblePeople = getVisiblePeople(people, query, centuries, sort, order);
+  const visiblePeople = getVisiblePeople(people, query, centuries, sort, order, sex);
 
   useEffect(() => {
     getPeople()

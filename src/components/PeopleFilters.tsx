@@ -9,6 +9,7 @@ export const PeopleFilters = () => {
   const query = searchParams.get('query') || '';
   const selectedCenturies = searchParams.getAll('centuries');
   const centuries = ['16', '17', '18', '19', '20'];
+  const sex = searchParams.get('sex') || '';
 
   const handleQueryChange = (inputEvent: ChangeEvent<HTMLInputElement>) => {
     const newParams = new URLSearchParams(searchParams);
@@ -28,17 +29,26 @@ export const PeopleFilters = () => {
       <p className="panel-heading">Filters</p>
 
       <p className="panel-tabs" data-cy="SexFilter">
-        <a className="is-active" href="#/people">
+        <SearchLink
+          className={!sex ? 'is-active' : ''}
+          params={{ sex: null }}
+        >
           All
-        </a>
+        </SearchLink>
 
-        <a className="" href="#/people?sex=m">
+        <SearchLink
+          className={sex === 'm' ? 'is-active' : ''}
+          params={{ sex: 'm' }}
+        >
           Male
-        </a>
+        </SearchLink>
 
-        <a className="" href="#/people?sex=f">
+        <SearchLink
+          className={sex === 'f' ? 'is-active' : ''}
+          params={{ sex: 'f' }}
+        >
           Female
-        </a>
+        </SearchLink>
       </p>
 
       <div className="panel-block">
